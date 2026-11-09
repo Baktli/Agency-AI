@@ -20,21 +20,29 @@ const Trustedby = () => {
           Trusted by Leading Companies
         </motion.h3>
 
-        <motion.div
-        initial={{opacity: 0, y: 10}}
-        whileInView={{opacity: 1, y: 0}}
-        transition={{duration: 0.4 }}
-        viewport={{once:true}}
-        className='flex items-center jutify-center flex-wrap gap-10   m-4'>
-             {company_logos.map((logo,index)=>( 
-                <motion.img
-                initial="hidden"
-                whileInView="visible"
-                transition={{staggerChildren: 0.1 }}
-                viewport={{once:true}}
-                key={index} src={logo} alt="" className='max-h-5 sm:max-h-6 dark:drop-shadow-xl'/>
-             ))}
-        </motion.div>
+        
+      
+        <div className="overflow-hidden w-full">
+            <motion.div
+              className="flex items-center gap-10 w-max"
+               animate={{ x: ["0%", "-50%"] }}
+              transition={{
+              duration: 20,
+               ease: "linear",
+              repeat: Infinity
+           }}
+          >
+          {[...company_logos, ...company_logos].map((logo, index) => (
+          <img
+             key={index}
+             src={logo}
+             alt="Company logo"
+             className="max-h-5 sm:max-h-6 shrink-0 dark:drop-shadow-xl"
+          />
+          ))}
+         </motion.div>
+        </div>
+
     </motion.div>
   )
 }
